@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toy Store</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Style the top navigation bar */
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .topnav form {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    /* Style the topnav links */
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    /* Change color on hover */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    /* Style the content */
+    .content {
+        background-color: #ddd;
+        padding: 10px;
+
+        /* Should be removed. Only for demonstration */
+    }
+
+    .span {
+        margin-left: 120px;
+    }
+
+    .table td {
+        padding: 10px 10px 20px 20px;
+        text-align: center;
+    }
+
+    table,
+    td {
+        border: 1px solid black;
+    }
+
+    /* Style the footer */
+    .footer {
+        bottom: 0;
+        background-color: #f1f1f1;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <div class="topnav">
+        <a href="/new">New Product</a>
+        <form action="/search" method="post">
+            Prodcut's name to search <input type="text" name="txtSearch">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+
+    <div class="content">
+        <div>
+            <h2>SHOPPING TIME</h2>
+            <p>Expand their Heartlake City with these new LEGO Friends sets</p>
+            <table class="table">
+                <tr>
+                    <td>Name</td>
+                    <td>Image</td>
+                    <td>Price</td>
+                    <td>Color</td>
+                    <td>Delete</td>
+                </tr>
+                {{#each model}}
+                <tr>
+                    <td><a href="edit?pid={{_id}}">{{productName}}</a></td>
+                    <td><img src="{{image}}"  width = "200px"> </img></td>
+                    <td>{{price}}</td>
+                    <td>{{color}}</td>
+                    <td><a href="/delete?pid={{_id}}">Delete</a></td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+
+    <div class="footer" style="font-size: small;">
+        <p>LEGO System A/S, DK-7190 Billund, Denmark. Must be 18 years or older to purchase online. LEGO, the LEGO logo,
+            the Minifigure, DUPLO, LEGENDS OF CHIMA, NINJAGO, BIONICLE, MINDSTORMS and MIXELS are trademarks and
+            copyrights of the LEGO Group. ©2020 The LEGO Group. All rights reserved. Use of this site signifies your
+            agreement to the terms of use.</p>
+    </div>
+
+</body>
+
+</html>
