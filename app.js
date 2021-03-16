@@ -72,7 +72,7 @@ app.post('/search',async (req,res)=>{
     let client= await MongoClient.connect(url);
     let dbo = client.db("ProductDB2");
     let results = await dbo.collection("abc").
-        find({productName: new RegExp(searchText,'i')}).toArray();
+        find({$or:[{productName: new RegExp(searchText,'i')},{color: new RegExp(searchText,'i')}]}).toArray();
         
     res.render('home',{model:results})
 })
@@ -90,7 +90,6 @@ app.post('/insert',async (req,res)=>{
     res.render('home',{model:results})
 })
 
-app.post('')
 
 var PORT = process.env.PORT || 5000
 app.listen(PORT);
